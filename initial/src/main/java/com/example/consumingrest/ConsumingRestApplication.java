@@ -28,8 +28,12 @@ public class ConsumingRestApplication {
     @Bean
     public CommandLineRunner run(RestTemplate restTemplate) throws Exception{
         return args -> {
-            Quote quote = restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-            log.info(quote.toString());
+//            Quote quote = restTemplate.getForObject("https://raw.githubusercontent.com/bloggi85/spring-consumingrest/master/initial/src/main/sample.json", Quote.class);
+//            log.info(quote.toString());
+
+
+            News news = restTemplate.getForObject("https://feed2json.org/convert?url=http://scripting.com/rss.xml", News.class);
+            log.info(news.toString());
         };
     }
 }
